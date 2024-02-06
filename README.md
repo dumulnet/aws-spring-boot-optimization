@@ -67,6 +67,9 @@ npm install # retrieves dependencies for the CDK stack
 npm run build # compiles the TypeScript files to JavaScript
 cdk bootstrap
 cdk deploy CdkappStack --parameters containerImage=<your_repo/you_image:tag> --context cpuType=X86_64
+
+//Destroy
+$ cdk destroy
 ```
 
 # Build the application
