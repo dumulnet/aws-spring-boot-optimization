@@ -34,6 +34,29 @@ All code blocks in this blog post refer to commands you enter into the terminal 
 sudo reboot
 ```
 
+# Push Docker Image
+- https://aws.amazon.com/ko/blogs/containers/optimize-your-spring-boot-application-for-aws-fargate/
+
+```
+//cloud9
+//The first step is to install the Docker Buildx-CLI plugin
+export DOCKER_BUILDKIT=1
+docker build --platform=local -o . https://github.com/docker/buildx.git
+
+mkdir -p ~/.docker/cli-plugins
+mv buildx ~/.docker/cli-plugins/docker-buildx
+chmod a+x ~/.docker/cli-plugins/docker-buildx
+
+//We install the emulators to build and run containers for ARM64
+docker run --privileged --rm tonistiigi/binfmt --install all
+
+docker buildx create --name SpringBootBuild --use
+docker buildx inspect --bootstrap
+
+//ECR Login
+aws ecr get-login-password --region <Region> | docker login --username AWS --password-stdin <Account-ID>.dkr.ecr.<Region>.amazonaws.com/<RepositoryName>                   
+```
+
 # Build the application
 
 Building the application to an Uber-JAR is very simple, the only dependency is Maven
