@@ -42,7 +42,7 @@ public class AppConfig {
                         .build();
 
         return DynamoDbClient.builder()
-                .region(Region.EU_WEST_1)
+                .region(Region.US_EAST_1)
                 .credentialsProvider(credentialsProvider)
                 .endpointOverride(URI.create(amazonDynamoDBEndpoint))
                 .build();
