@@ -59,6 +59,15 @@ aws ecr get-login-password --region <Region> | docker login --username AWS --pas
 cd baseline/CustomerService
 docker buildx build --platform linux/amd64,linux/arm64 --tag <Account-ID>.dkr.ecr.<Region>.amazonaws.com/<RepositoryName>:latest --push .
 ```
+# IaC
+```
+npm install -g aws-cdk # Install the CDK if this hasn’t been installed already
+cd cdkapp
+npm install # retrieves dependencies for the CDK stack
+npm run build # compiles the TypeScript files to JavaScript
+cdk bootstrap
+cdk deploy CdkappStack --parameters containerImage=<your_repo/you_image:tag> --context cpuType=X86_64
+```
 
 # Build the application
 
