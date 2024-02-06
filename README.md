@@ -54,7 +54,10 @@ docker buildx create --name SpringBootBuild --use
 docker buildx inspect --bootstrap
 
 //ECR Login
-aws ecr get-login-password --region <Region> | docker login --username AWS --password-stdin <Account-ID>.dkr.ecr.<Region>.amazonaws.com/<RepositoryName>                   
+aws ecr get-login-password --region <Region> | docker login --username AWS --password-stdin <Account-ID>.dkr.ecr.<Region>.amazonaws.com/<RepositoryName>
+
+cd baseline/CustomerService
+docker buildx build --platform linux/amd64,linux/arm64 --tag <Account-ID>.dkr.ecr.<Region>.amazonaws.com/<RepositoryName>:latest --push .
 ```
 
 # Build the application
