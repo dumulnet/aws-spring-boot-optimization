@@ -71,6 +71,17 @@ cdk deploy CdkappStack --parameters containerImage=<your_repo/you_image:tag> --c
 //Destroy
 $ cdk destroy
 ```
+# Prometheus
+- Trace 및 Metrics 설정
+- S3에 [prometheus 설정 파일](https://github.com/aws-observability/aws-otel-collector/blob/main/config/ecs/ecs-amp-xray-prometheus.yaml) 저장 -> [ECS 서비스 JSON 변경(Task Role에 S3 권한 설정)](https://aws.amazon.com/ko/blogs/tech/springboot-application-observability-on-amazon-ecs/?utm_source=dlvr.it&utm_medium=facebook&mibextid=WaXdOe)
+```
+...
+            "command": [
+                "--config",
+                "s3://solbrain-adot-collector-confmap.s3.us-east-1.amazonaws.com/ecs-amp-xray-prometheus.yaml"
+            ],
+
+```
 
 # Build the application
 
