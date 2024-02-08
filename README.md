@@ -126,8 +126,8 @@ After the infrastructure has been created successfully, the output `LoadBalancer
 ```
 $ curl -v http://<lb-url>:8080/api/customers // Get a list of all customers
 $ curl -v http://<lb-url>:8080/api/customers/<id> // Get customer by id
-$ curl -v -d '{"name":"hmueller", "email":"hm@muelle.com", "accountNumber": "243423"}' -H "Content-Type: application/json" -X POST http://<lb-url>:8080/customers // Add a new customer
-$ curl -v -X DELETE http://<lb-url>:8080/customers/<id> // Delete customer by id
+$ curl -v -d '{"name":"hmueller", "email":"hm@muelle.com", "accountNumber": "243423"}' -H "Content-Type: application/json" -X POST http://<lb-url>:8080/api/customers // Add a new customer
+$ curl -v -X DELETE http://<lb-url>:8080/api/customers/<id> // Delete customer by id
 
 ```
 
